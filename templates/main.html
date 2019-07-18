@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Stuff!</title>
+    <link rel="stylesheet" href="/css/main.css">
+  </head>
+  <body>
+    <span class="loginout">
+      {%if user %}
+      Welcome {{user.email()}}
+      <a href="{{logout_url}}">Logout!</a>
+      {% else %}
+      <a href="{{login_url}}">Login!</a>
+      {% endif %}
+    </span>
+    {% if user %}
+    <h1>Add your stuff!!!</h1>
+    <ul class="list_of_stuff">
+      {% for thing in stuff %}
+      <li>{{thing.text}}</li>
+      {% endfor %}
+    </ul>
+    <form method="post" action="/">
+      <div>Name of New Thing:
+        <input type="text" name="thing_text" value="" autofocus>
+      </div>
+      <div><input type="submit" value="Add a Thing!"></div>
+    </form>
+    {% endif %}
+  </body>
+</html>
